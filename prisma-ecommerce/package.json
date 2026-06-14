@@ -2,27 +2,28 @@
   "name": "prisma-ecommerce",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "seed": "node prisma/seed.js"
+    "start": "node --experimental-strip-types src/index.ts",
+    "dev": "nodemon --exec \"node --experimental-strip-types\" src/index.ts",
+    "seed": "node prisma/seed.js",
+    "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
+    "postinstall": "prisma generate --schema=./prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
-    "@mermaid-js/mermaid-cli": "^11.15.0",
     "@prisma/adapter-mariadb": "^7.8.0",
     "@prisma/client": "^6.19.3",
     "bcrypt": "^6.0.0",
     "express": "^5.2.1",
-    "prisma": "^6.19.3",
-    "prisma-erd-generator": "^2.4.3"
+    "prisma": "^6.19.3"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "nodemon": "^3.1.14"
   }
 }
